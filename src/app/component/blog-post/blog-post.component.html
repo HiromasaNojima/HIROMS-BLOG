@@ -1,0 +1,23 @@
+<div class="container" id="blog-post-container">
+  <div class="row">
+    <div class="card mb-2 pb-1" id="content-title">
+      <p>{{title}}</p>
+      <div>
+        <span><time [dateTime]="publishedAt" class="pe-1">投稿日 {{publishedAt | date:"yyyy月MM日dd日"}}</time></span>
+        <span><time *ngIf="updatedAt" [dateTime]="updatedAt">更新日 {{updatedAt | date:"yyyy月MM日dd日"}}</time></span>
+        <span *ngFor="let tag of tags">
+          <a [routerLink]="['/tags', tag.fields.slug]" class="tag-link pe-1"><i class="bi bi-tag"></i>{{tag.fields.name}}</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-9 oreder-lg-1 order-2 card col-12" id="content-card">
+      <markdown [data]="markdown" class="markdown-body" (ready)="onReady()" #contentBody></markdown>
+    </div>
+    <div class="col-lg-3 order-lg-2 oreder-1 col-12 pb-2 ps-lg-2" #tocContainer id="toc-container" (window:resize)="onResize()">
+      <div #toc id="toc" [class]="tocClass" [style.width.px]="tocWidth">
+        <div class="card-header">目次</div>
+      </div>
+    </div>
+  </div>
+</div>

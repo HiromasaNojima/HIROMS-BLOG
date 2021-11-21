@@ -1,0 +1,50 @@
+<mat-toolbar *ngIf="isNotLarge$ | async" color="primary">
+  <span><mat-icon (click)="sidenav.toggle()">menu</mat-icon></span>
+  <span class="ps-2"><a routerLink="/">HIROM'S BLOG</a></span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [mode]="(isLarge$ | async) ? 'side' : 'over'" [opened]="isLarge$ | async" #sidenav>
+    <div class="d-flex flex-column">
+      <div class="menu">
+        <a routerLink="/"><img src="/assets/font_logo.png" class="logo-img ps-3" alt="logo"></a>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" (click)="listItemClick()">
+            <i class="bi bi-house-door-fill white-icon menu-icon"></i><span>ホーム</span>
+          </a>
+          <a class="list-group-item list-group-item-action" routerLink="/tags/tech-memo" [routerLinkActive]="['active']" (click)="listItemClick()">
+            <i class="bi bi-code-slash white-icon menu-icon"></i><span>技術メモ</span>
+          </a>
+          <a class="list-group-item list-group-item-action" routerLink="/tags/record-of-reading" [routerLinkActive]="['active']" (click)="listItemClick()">
+            <i class="bi bi-book white-icon menu-icon"></i><span>読書録</span>
+          </a>
+          <a class="list-group-item list-group-item-action" routerLink="/tags/random-note" [routerLinkActive]="['active']" (click)="listItemClick()">
+            <i class="bi bi-vector-pen white-icon menu-icon"></i><span>雑記</span>
+          </a>
+          <a class="list-group-item list-group-item-action mb-5" routerLink="/tags/portfolio" [routerLinkActive]="['active']" (click)="listItemClick()">
+            <i class="bi bi-terminal white-icon menu-icon"></i><span>ポートフォリオ</span>
+          </a>
+        </div>
+      <mat-divider class="mt-5"></mat-divider>
+      </div>
+    <div class="self-introduction mt-3 pe-1 ps-3">
+      <div class="ms-4">
+        <img src="/assets/myself-rounded-120*120.png" class="myself-img ps-1 d-none d-sm-block" alt="myself-img">
+        <p class="my-name">Hiromasa Nojima<br></p>
+      </div>
+      <div class="d-none d-sm-block">
+        <p>ソフトウェアエンジニア。業務では専らRESTAPIを作ってます。</p>
+        <p>当ブログはAngular製です。フロントの勉強がてら自作しました。</p>
+      </div>
+      <div class="d-flex justify-content-evenly pe-3">
+        <a href="https://qiita.com/HiromasaNojima"><img class="mt-2" src="/assets/qiita-icon.png" alt="qiita"></a>
+        <a href="https://github.com/HiromasaNojima"><i class="bi bi-github black-icon icon-size"></i></a>
+        <a href="https://twitter.com/HiromasaNojima" class="blue-icon"><i class="bi bi-twitter icon-size"></i></a>
+      </div>
+    </div>
+  </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+    <app-particles></app-particles>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="page-title-container pt-2">
+      <div class="page-title  mb-3 ps-2 pt-1" *ngIf="tagName">
+        <h2><i class="bi bi-tag"></i>{{tagName}}</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="col col-lg-3 d-flex pb-3 col-md-4 col-sm-6 col-12" *ngFor="let blogPost of blogPosts">
+      <div class="card">
+        <a [routerLink]="['/entries', blogPost.fields.slug]">
+        <img src="{{blogPost.fields.headerImage.fields.file.url}}" class="card-img-top" alt="card-image">
+        </a>
+        <div class="card-body">
+          <a [routerLink]="['/entries', blogPost.fields.slug]">
+          <div class="d-flex text-muted mb-1">
+            <span class="small pe-2"><i class="bi bi-calendar-event pe-1"></i><time [dateTime]="blogPost.fields.publishedAt">{{ blogPost.fields.publishedAt | date:"yyyy月MM日dd日"}}</time></span>
+            <span class="small" *ngIf="blogPost.fields.updatedAt"><i class="bi bi-arrow-repeat"></i><time [dateTime]="blogPost.fields.updatedAt">{{ blogPost.fields.updatedAt | date:"yyyy月MM日dd日"}}</time></span>
+          </div>
+          <h5 class="card-title">{{blogPost.fields.title}}</h5>
+          </a>
+          <span *ngFor="let tag of blogPost.fields.tags" class="card-tags pe-1">
+            <a class="tag" [routerLink]="['/tags', tag.fields.slug]"><i class="bi bi-tag"></i>{{tag.fields.name}}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

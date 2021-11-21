@@ -1,0 +1,106 @@
+mat-toolbar {
+  position: fixed; 
+  z-index: 2;
+  font-weight: 400;
+}
+.mat-toolbar > span > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.mat-toolbar > span > mat-icon {
+  padding-top: 0.5rem;
+}
+
+.mat-toolbar.mat-primary {
+  background: #07b3ce;
+  color: #fff;
+}
+
+mat-sidenav {
+  background-color:#07b3ce;
+  color: white;
+  position: fixed;
+  z-index: 3;
+}
+
+.active {
+  background-color: #098699 !important;
+}
+
+.white-icon {
+  color: white;
+}
+
+.menu-icon {
+  padding-right: 20px;
+}
+
+span {
+  color: white;
+}
+
+.mat-divider {
+  border-top-color: #ffffff;
+  margin: 10px
+}
+
+.logo-img {
+  padding-left: 7px;
+}
+
+a.list-group-item-action:hover {
+  background-color: #076b7a;
+}
+
+a.list-group-item {
+  background-color: #07b3ce;
+  border-color: #07b3ce;
+  font-size: 18px;
+}
+
+mat-sidenav-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 100vh;
+}
+
+@media screen and (min-width: 1280px) {
+  mat-sidenav-content {
+    padding-top: 2rem;
+
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  mat-sidenav-content {
+    padding-top: 9vh;
+  }
+  .logo-img {
+    display: none;
+  }
+
+  div.list-group {
+    padding-top: 10vh;
+  }
+}
+
+mat-sidenav {
+  width: 210px;
+}
+
+.black-icon {
+  color: black;
+}
+
+.twitter-icon {
+  color: #1DA1F2;
+}
+
+.icon-size {
+  font-size: 32px;
+}
+
+.blue-icon {
+  color:#0077ff	
+}
