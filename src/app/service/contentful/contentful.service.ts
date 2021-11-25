@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createClient, Entry, EntryCollection, Asset } from 'contentful';
+import { createClient, Entry } from 'contentful';
 import {environment} from '../../../environments/environment'
 
 export interface EntryWithTag {
@@ -14,7 +14,7 @@ export class ContentfulService {
   
   private client = createClient({
     space: environment.contentful.spaceId,
-    accessToken: environment.contentful.accessToken,
+    accessToken: environment.contentful.token,
     environment: environment.contentful.environment
   });
 
