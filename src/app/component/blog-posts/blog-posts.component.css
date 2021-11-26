@@ -19,11 +19,14 @@
   font-size: 14px;
 }
 
-.tag:hover {
-  color: #24292F;
-}
 
-.card:hover {
-  transition:transform 0.3s;
-  transform: scale(1.05, 1.05);
+@media screen and (min-width: 992px) {
+  .tag:hover {
+    color: #24292F;
+  }
+
+  .card:hover {
+    transition:transform 0.3s;
+    transform: scale(1.05, 1.05);
+  }
 }
