@@ -71,6 +71,12 @@
   position: fixed;
 }
 
+@media screen and (max-width:768px) {
+  #content-title {
+    margin-top: 1rem;
+  }
+}
+
 @media screen and (max-width:992px) {
   #toc a {
     color: #24292F;
