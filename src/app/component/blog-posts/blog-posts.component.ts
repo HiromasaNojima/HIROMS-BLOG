@@ -25,7 +25,7 @@ export class BlogPostsComponent implements OnDestroy{
           this.service.fetchTag(tag).then(res => {
             this.tagName = res[0].fields.name;
             this.pageTitle.setTitle(`タグ「${res[0].fields.name}」の記事一覧 - HIROM'S BLOG`);
-            this.metaService.updateDescription(`タグ「${res[0].fields.name}」の記事一覧`);
+            this.metaService.updateDescription(`タグ「${res[0].fields.name}」の記事一覧。ソフトウェアエンジニアの個人ブログ。主に技術に関する記事を執筆しています。`);
             this.service.fetchBlogPostByTagId(res[0].sys.id).then(res => {
               this.blogPosts = res;
             })
@@ -33,7 +33,7 @@ export class BlogPostsComponent implements OnDestroy{
         } else {
           this.service.fetchBlogPosts().then(blogPosts => {this.blogPosts = blogPosts});
           this.pageTitle.setTitle("最新の記事一覧 - HIROM'S BLOG");
-          this.metaService.updateDescription("最新の記事一覧");
+          this.metaService.updateDescription("最新の記事一覧。ソフトウェアエンジニアの個人ブログ。主に技術に関する記事を執筆しています。");
         }
       }
     )
