@@ -69,6 +69,8 @@
 
 .fixed {
   position: fixed;
+  overflow-y: scroll;
+  max-height: 80%;
 }
 
 @media screen and (max-width:768px) {
