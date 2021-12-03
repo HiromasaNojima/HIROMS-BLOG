@@ -4,6 +4,7 @@ import { ContentfulService } from 'src/app/service/contentful/contentful.service
 import { BreakpointObserver,BreakpointState } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import { MetaService } from 'src/app/service/meta/meta.service';
 
 @Component({
   selector: 'app-blog-post',
@@ -45,7 +46,7 @@ export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
     this.calcTocWidth();
   }
 
-  constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title) {
+  constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title, private metaService: MetaService) {
   }
 
   ngAfterViewInit() {
@@ -72,6 +73,7 @@ export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
           this.tags = blogPosts[0].fields.tags;
           this.publishedAt = blogPosts[0].fields.publishedAt;
           this.updatedAt = blogPosts[0].fields.updatedAt;
+          this.metaService.updateDescription(blogPosts[0].fields.description);
         }
       )
     }
