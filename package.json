@@ -36,6 +36,8 @@
     "ngx-markdown": "^13.0.0",
     "ngx-page-scroll": "^7.0.6",
     "ngx-page-scroll-core": "^7.0.6",
+    "prism-themes": "^1.9.0",
+    "prismjs": "^1.25.0",
     "rxjs": "~6.6.0",
     "tocbot": "^4.17.0",
     "tslib": "^2.3.0",
