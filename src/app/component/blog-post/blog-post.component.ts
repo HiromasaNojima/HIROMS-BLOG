@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2, ViewChild, AfterViewInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContentfulService } from 'src/app/service/contentful/contentful.service';
 import { BreakpointObserver,BreakpointState } from '@angular/cdk/layout';
@@ -11,7 +11,7 @@ import { MetaService } from 'src/app/service/meta/meta.service';
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.css']
 })
-export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
+export class BlogPostComponent implements OnInit, OnDestroy   {
 
   markdown:any;
   headings: HTMLElement[] = [];
@@ -49,10 +49,6 @@ export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
   constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title, private metaService: MetaService) {
   }
 
-  ngAfterViewInit() {
-    this.calcTocWidth();
-  }
-
   ngOnInit(): void {
     this.breakPointSubsction = this.breakpointObserver.observe(['(min-width:992px)'])
     .subscribe((state:BreakpointState) => {
@@ -86,7 +82,6 @@ export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
   onReady() {
     this.elementRef.nativeElement.querySelectorAll<HTMLElement>("h1, h2, h3").forEach(x => {
       this.headings.push(x);
-      let tag = x.tagName;
     });
     
     if (this.headings.length != 0 && !this.finshedRendering) {
@@ -102,6 +97,7 @@ export class BlogPostComponent implements OnInit, AfterViewInit,OnDestroy   {
       });
 
       this.finshedRendering = true;
+      this.calcTocWidth();
       });
 
       document.querySelectorAll('section[id]').forEach((section) => {
