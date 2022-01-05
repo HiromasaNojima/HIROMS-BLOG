@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { createClient, Entry } from 'contentful';
-import {environment} from '../../../environments/environment'
+import { createClient, Entry, EntryCollection } from 'contentful';
+import { environment } from '../../../environments/environment'
 
 export interface EntryWithTag {
   entry: Entry<any>;
@@ -20,12 +20,18 @@ export class ContentfulService {
 
   constructor() { }
 
-  fetchBlogPosts() :Promise<Entry<any>[]>{
-    return this.client.getEntries({content_type: 'blogPost', order: '-fields.publishedAt'}).then(res => res.items);
+  fetchBlogPosts(page: number, limit: number) :Promise<EntryCollection<any>>{
+    return this.client.getEntries({content_type: 'blogPost', order: '-fields.publishedAt',
+      skip: this.calculateSkipNum(page, limit), limit: limit}).then(res => res);
   }
 
-  fetchBlogPostByTagId(tagId:string) :Promise<Entry<any>[]>{
-    return this.client.getEntries({content_type: 'blogPost', order: '-fields.publishedAt', 'fields.tags.sys.id': tagId}).then(res => res.items);
+  private calculateSkipNum(page: number, limit: number) :number {
+    return (page - 1) * limit;
+  }
+
+  fetchBlogPostByTagId(tagId:string, page: number, limit: number) :Promise<EntryCollection<any>>{
+    return this.client.getEntries({content_type: 'blogPost', order: '-fields.publishedAt', 'fields.tags.sys.id': tagId,
+      skip: this.calculateSkipNum(page, limit), limit: limit}).then(res => res);
   }
 
   fetchBlogPost(slug:string) :Promise<Entry<any>[]>{

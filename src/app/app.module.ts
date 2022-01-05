@@ -22,7 +22,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [ 
   { path: 'tags/:tag', component: BlogPostsComponent},
+  { path: 'tags/:tag/:page', component: BlogPostsComponent},
   { path: 'entries/:entry', component: BlogPostComponent },
+  { path: 'pages/:page', component: BlogPostsComponent },
   { path: '**', component: BlogPostsComponent },
 ];
 @NgModule({

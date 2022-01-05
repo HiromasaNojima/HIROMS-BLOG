@@ -26,4 +26,11 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <h6 class="text-center page py-3 ">
+      <span *ngIf="prePageLink"><a class="pe-3" routerLink="{{prePageLink}}"><div class="arrow-left"></div>前へ</a></span>
+      <span>{{currentPageNumber}}/{{totalPageNumber}}ページ</span>
+      <span class="ps-3" *ngIf="nextPageLink"><a routerLink="{{nextPageLink}}">次へ<div class="arrow-right"></div></a></span>
+    </h6>
+  </div>
 </div>

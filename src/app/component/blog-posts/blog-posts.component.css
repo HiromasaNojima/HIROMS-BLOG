@@ -19,6 +19,30 @@
   font-size: 14px;
 }
 
+.page > span > a {
+  text-decoration: none;
+  color: black;
+}
+
+.arrow-right {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(45deg);
+}
+
+.arrow-left {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transform: rotate(45deg);
+}
 
 @media screen and (min-width: 992px) {
   .tag:hover {
