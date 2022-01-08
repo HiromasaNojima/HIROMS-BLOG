@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="card col-md-10 offset-md-1 col-sm-12 offset-sm-0 mt-3 py-3">
+      <h1 class="card-title text-center mt-4">お問合せ</h1>
+      <div class="col-sm-12 offset-sm-0 col-md-8 offset-md-2">
+        <hr>
+        <form name="contact" method="POST" netlify>
+          <div class="my-3">
+            <label class="form-label required">お名前</label>
+            <input type="text" name="name" class="form-control" placeholder="山田太郎">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">所属</label>
+            <input type="text" name="affiliation" class="form-control" placeholder="必要に応じてご記入ください">
+          </div>
+          <div class="mb-3">
+            <label class="form-label required">メールアドレス(ご返信先)</label>
+            <input type="email" name="email" class="form-control" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label required">メッセージ</label>
+            <textarea name="message" class="form-control" rows="8" placeholder="お問合せ内容"></textarea>
+          </div>
+          <button type="submit" class="btn btn-block btn-color mt-3 mb-4">送信</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
