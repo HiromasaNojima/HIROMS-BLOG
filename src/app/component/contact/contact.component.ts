@@ -13,10 +13,10 @@ export class ContactComponent implements OnInit {
   errorMessage = "なんらかの原因でメッセージの送信に失敗しました。";
 
   contactForm = new FormGroup({
-    name: new FormControl(),
-    email: new FormControl(),
-    art: new FormControl(),
-    message: new FormControl(),
+    name: new FormControl(''),
+    email: new FormControl(''),
+    art: new FormControl(''),
+    message: new FormControl(''),
   });
 
   constructor(
@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
     .append('email', this.contactForm.value.art)
     .append('message', this.contactForm.value.message)
     this.http.post('/', body.toString(), {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).subscribe(
-      res => {
+      () => {
         this.router.navigate(['/thanks']);
       },
       err => {
