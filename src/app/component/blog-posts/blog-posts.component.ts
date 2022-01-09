@@ -74,8 +74,6 @@ export class BlogPostsComponent implements OnDestroy{
   }
 
   private createPageLink(page:number) {
-    console.log(this.currentPageNumber);
-    console.log(page);
     if (this.tagName) {
       return `/tags/${this.tagName}/${page}`;
     } else {

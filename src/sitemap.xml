@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<url><loc>https://hiroms-blog.com/entries/angular-netlify-forms</loc></url>
+<url><loc>https://hiroms-blog.com/entries/introductory-to-relational-database-chapter-2</loc></url>
+<url><loc>https://hiroms-blog.com/entries/introductory-to-relational-database-chapter-1</loc></url>
+<url><loc>https://hiroms-blog.com/entries/japanese-and-software-abstract</loc></url>
+<url><loc>https://hiroms-blog.com/entries/angular-contentful-pagination</loc></url>
+<url><loc>https://hiroms-blog.com/entries/code-complete-part6</loc></url>
+<url><loc>https://hiroms-blog.com/entries/code-complete-part5</loc></url>
+<url><loc>https://hiroms-blog.com/entries/code-complete-part4</loc></url>
+<url><loc>https://hiroms-blog.com/entries/code-complete-part3</loc></url>
+<url><loc>https://hiroms-blog.com/entries/code-complete-part2</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-7</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-6</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-5</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-4</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-3</loc></url>
+<url><loc>https://hiroms-blog.com/entries/nand2tetris-chapter-1</loc></url>
+
+<url><loc>https://hiroms-blog.com/entries/get-contentful-entries-by-angular</loc></url>
 <url><loc>https://hiroms-blog.com/entries/create-responsive-sidenav-and-toolbar-with-angular-material</loc></url>
 <url><loc>https://hiroms-blog.com/entries/about-my-blog</loc></url>
 <url><loc>https://hiroms-blog.com</loc></url>
