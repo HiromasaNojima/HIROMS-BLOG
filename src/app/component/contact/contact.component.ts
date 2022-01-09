@@ -15,7 +15,7 @@ export class ContactComponent implements OnInit {
   contactForm = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
-    art: new FormControl(''),
+    affiliation: new FormControl(''),
     message: new FormControl(''),
   });
 
@@ -31,8 +31,8 @@ export class ContactComponent implements OnInit {
     const body = new HttpParams()
     .set('form-name', 'contact')
     .append('name', this.contactForm.value.name)
-    .append('affiliation', this.contactForm.value.email)
-    .append('email', this.contactForm.value.art)
+    .append('affiliation', this.contactForm.value.affiliation)
+    .append('email', this.contactForm.value.email)
     .append('message', this.contactForm.value.message)
     this.http.post('/', body.toString(), {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).subscribe(
       () => {

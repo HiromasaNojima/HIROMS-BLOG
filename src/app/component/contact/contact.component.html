@@ -11,19 +11,19 @@
           </p>
           <div class="my-3">
             <label class="form-label required">お名前</label>
-            <input type="text" name="name" class="form-control" placeholder="山田太郎" required>
+            <input type="text" name="name" formControlName="name" class="form-control" placeholder="山田太郎" required>
           </div>
           <div class="mb-3">
             <label class="form-label">所属</label>
-            <input type="text" name="affiliation" class="form-control" placeholder="必要に応じてご記入ください">
+            <input type="text" name="affiliation" formControlName="affiliation" class="form-control" placeholder="必要に応じてご記入ください">
           </div>
           <div class="mb-3">
             <label class="form-label required">メールアドレス(ご返信先)</label>
-            <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+            <input type="email" name="email" formControlName="email" class="form-control" placeholder="name@example.com" required>
           </div>
           <div class="mb-3">
             <label class="form-label required">メッセージ</label>
-            <textarea name="message" class="form-control" rows="8" placeholder="お問合せ内容" required></textarea>
+            <textarea name="message" formControlName="message" class="form-control" rows="8" placeholder="お問合せ内容" required></textarea>
           </div>
           <button type="submit" class="btn btn-block btn-color mt-3 mb-4">送信</button>
         </form>
