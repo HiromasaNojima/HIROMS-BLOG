@@ -1,5 +1,7 @@
 import { NgModule,  SecurityContext} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -52,6 +54,9 @@ const routes: Routes = [
     MatCardModule,
     MatGridListModule,
     NgParticlesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     FlexLayoutModule,
     MarkdownModule.forRoot(
       {
