@@ -18,6 +18,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './component/contact/contact.component';
+import { ThanksComponent } from './component/thanks/thanks.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'entries/:entry', component: BlogPostComponent },
   { path: 'pages/:page', component: BlogPostsComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'thanks', component: ThanksComponent },
   { path: '**', component: BlogPostsComponent },
 ];
 @NgModule({
@@ -36,6 +38,7 @@ const routes: Routes = [
     ParticlesComponent,
     BlogPostComponent,
     ContactComponent,
+    ThanksComponent,
   ],
   imports: [
     BrowserModule,
