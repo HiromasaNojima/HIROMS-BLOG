@@ -14,7 +14,12 @@
 </head>
 <body>
   <app-root></app-root>
-
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="affiliation" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q20213Z93V"></script>
   <script>
