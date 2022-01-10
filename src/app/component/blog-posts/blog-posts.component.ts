@@ -14,6 +14,7 @@ import { MetaService } from 'src/app/service/meta/meta.service';
 export class BlogPostsComponent implements OnDestroy{
   blogPosts: Entry<any>[] = [];
   tagName:any;
+  tag:any;
   paramsSubscription : Subscription;
   currentPageNumber!:number;
   totalPageNumber:any;
@@ -31,6 +32,7 @@ export class BlogPostsComponent implements OnDestroy{
         }
         this.currentPageNumber = page;
         if (tag) {
+          this.tag = tag;
           this.service.fetchTag(tag).then(res => {
             this.tagName = res[0].fields.name;
             this.pageTitle.setTitle(`タグ「${res[0].fields.name}」の記事一覧 - HIROM'S BLOG`);
@@ -75,7 +77,7 @@ export class BlogPostsComponent implements OnDestroy{
 
   private createPageLink(page:number) {
     if (this.tagName) {
-      return `/tags/${this.tagName}/${page}`;
+      return `/tags/${this.tag}/${page}`;
     } else {
       return `/pages/${page}`;
     }
