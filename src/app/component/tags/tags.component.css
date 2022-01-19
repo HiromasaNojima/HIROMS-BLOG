@@ -1,0 +1,13 @@
+.tag {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  font-size  : 20px;
+}
+
+@media screen and (min-width: 992px) {
+  .tag:hover {
+    transition:transform 0.3s;
+    transform: scale(1.05, 1.05);
+  }
+}

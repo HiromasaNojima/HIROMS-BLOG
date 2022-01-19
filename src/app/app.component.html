@@ -23,6 +23,9 @@
           <a class="list-group-item list-group-item-action" routerLink="/tags/portfolio" [routerLinkActive]="['active']" (click)="listItemClick()">
             <i class="bi bi-terminal white-icon menu-icon"></i><span>ポートフォリオ</span>
           </a>
+          <a class="list-group-item list-group-item-action" routerLink="/tags" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" (click)="listItemClick()">
+            <i class="bi bi-tags white-icon menu-icon"></i><span>タグ一覧</span>
+          </a>
           <a class="list-group-item list-group-item-action" routerLink="/contact" [routerLinkActive]="['active']" (click)="listItemClick()">
             <i class="bi bi-envelope white-icon menu-icon"></i><span>お問合せ</span>
           </a>

@@ -42,4 +42,8 @@ export class ContentfulService {
     return this.client.getEntries({content_type: 'tags', 'fields.slug': tag}).then(res => res.items);
   }
 
+  fetchTags() :Promise<Entry<any>[]>{
+    return this.client.getEntries({content_type: 'tags'}).then(res => res.items);
+  }
+
 }

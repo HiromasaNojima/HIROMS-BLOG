@@ -21,10 +21,12 @@ import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './component/contact/contact.component';
 import { ThanksComponent } from './component/thanks/thanks.component';
+import { TagsComponent } from './component/tags/tags.component';
 
 
 
 const routes: Routes = [ 
+  { path: 'tags', component: TagsComponent },
   { path: 'tags/:tag', component: BlogPostsComponent},
   { path: 'tags/:tag/:page', component: BlogPostsComponent},
   { path: 'entries/:entry', component: BlogPostComponent },
@@ -41,6 +43,7 @@ const routes: Routes = [
     BlogPostComponent,
     ContactComponent,
     ThanksComponent,
+    TagsComponent,
   ],
   imports: [
     BrowserModule,

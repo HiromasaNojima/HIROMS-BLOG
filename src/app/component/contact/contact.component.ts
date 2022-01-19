@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MetaService } from 'src/app/service/meta/meta.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +13,7 @@ import { Router } from '@angular/router';
 export class ContactComponent implements OnInit {
 
   errorMessage = "なんらかの原因でメッセージの送信に失敗しました。";
+  pageTitle = "お問合せ";
 
   contactForm = new FormGroup({
     name: new FormControl(''),
@@ -21,10 +24,14 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private metaService:MetaService,
+    private title :Title
     ) { }
 
   ngOnInit(): void {
+    this.title.setTitle(this.pageTitle + " - HIROM'S BLOG");
+    this.metaService.updateDescription(this.pageTitle + "。ソフトウェアエンジニアの個人ブログ。主に技術に関する記事を執筆しています。");
   }
 
   onSubmit() {
