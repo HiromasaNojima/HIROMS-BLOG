@@ -60,7 +60,7 @@
 }
 
 #content-card {
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 #blog-post-container {
@@ -71,6 +71,11 @@
   position: fixed;
   overflow-y: scroll;
   max-height: 80%;
+}
+
+.breadcrumb-item > a {
+  text-decoration: none;
+  color: #000;
 }
 
 @media screen and (max-width:768px) {

@@ -21,6 +21,8 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   tags:any;
   publishedAt:any;
   updatedAt:any;
+  breadCrumbListTagName:any;
+  breadCrumbListTagSlug:any;
 
   @ViewChild('toc') 
   element!: ElementRef;
@@ -87,8 +89,10 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     let name : string = '';
     for(let tag of this.tags) {
       if(this.breadCrumbListTags.has(tag.fields.slug)) {
+        this.breadCrumbListTagName = tag.fields.name;
+        this.breadCrumbListTagSlug = tag.fields.slug;
         name = tag.fields.name;
-        item = 'https://hiroms-blog.com/tags/' + tag.fields.slug
+        item = 'https://hiroms-blog.com/tags/' + tag.fields.slug;
         break;
       }
     }
