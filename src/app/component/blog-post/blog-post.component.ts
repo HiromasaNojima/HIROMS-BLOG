@@ -5,13 +5,14 @@ import { BreakpointObserver,BreakpointState } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/service/meta/meta.service';
+import { JsonLdService, ItemListElement } from 'src/app/service/json-ld/json-ld.service';
 
 @Component({
   selector: 'app-blog-post',
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.css']
 })
-export class BlogPostComponent implements OnInit, OnDestroy   {
+export class BlogPostComponent implements OnInit, OnDestroy {
 
   markdown:any;
   headings: HTMLElement[] = [];
@@ -34,6 +35,8 @@ export class BlogPostComponent implements OnInit, OnDestroy   {
 
   breakPointSubsction!:Subscription;
 
+  breadCrumbListTags : Set<string> = new Set<string>(['tech-memo', 'record-of-reading', 'random-note', 'portfolio']);
+
   calcTocWidth() {
     if (window.matchMedia('(min-width:992px)').matches) {
       this.tocWidth = this.tocContainer.nativeElement.offsetWidth - 8;
@@ -46,7 +49,9 @@ export class BlogPostComponent implements OnInit, OnDestroy   {
     this.calcTocWidth();
   }
 
-  constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title, private metaService: MetaService) {
+  constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, 
+    private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title, 
+    private metaService: MetaService, private jsonLdService: JsonLdService) {
   }
 
   ngOnInit(): void {
@@ -70,12 +75,44 @@ export class BlogPostComponent implements OnInit, OnDestroy   {
           this.publishedAt = blogPosts[0].fields.publishedAt;
           this.updatedAt = blogPosts[0].fields.updatedAt;
           this.metaService.updateDescription(blogPosts[0].fields.description);
+          this.jsonLdService.removeBreadcrumbList();
+          this.jsonLdService.insertBreadcrumbList(this.createItemListElement());
         }
       )
     }
   }
 
+  createItemListElement() : ItemListElement[] {
+    let item : any;
+    let name : string = '';
+    for(let tag of this.tags) {
+      if(this.breadCrumbListTags.has(tag.fields.slug)) {
+        name = tag.fields.name;
+        item = 'https://hiroms-blog.com/tags/' + tag.fields.slug
+        break;
+      }
+    }
+
+    let itemListElement : ItemListElement[] = [
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: name,
+        item: item
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: this.title,
+        item: null
+      }
+    ];
+
+    return itemListElement;
+  }
+
   ngOnDestroy() {
+    this.jsonLdService.removeBreadcrumbList();
     this.breakPointSubsction.unsubscribe();
   }
 
