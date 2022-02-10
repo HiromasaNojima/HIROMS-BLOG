@@ -28,7 +28,6 @@
     "contentful": "^9.1.4",
     "github-markdown-css": "^5.0.0",
     "jquery": "^3.6.0",
-    "mdb-angular-ui-kit": "^1.5.0",
     "mdb-ui-kit": "^3.9.0",
     "ng-particles": "^2.20.3",
     "ngx-markdown": "^13.0.0",
