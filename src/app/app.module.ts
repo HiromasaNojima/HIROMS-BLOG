@@ -22,8 +22,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './component/contact/contact.component';
 import { ThanksComponent } from './component/thanks/thanks.component';
 import { TagsComponent } from './component/tags/tags.component';
-
-
+import { NgxTocModule } from 'ngx-toc';
 
 const routes: Routes = [ 
   { path: 'tags', component: TagsComponent },
@@ -73,6 +72,7 @@ const routes: Routes = [
         anchorScrolling: 'enabled',
       }
     ),
+    NgxTocModule
   ],
   providers: [],
   bootstrap: [AppComponent]

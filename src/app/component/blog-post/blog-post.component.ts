@@ -1,11 +1,12 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContentfulService } from 'src/app/service/contentful/contentful.service';
 import { BreakpointObserver,BreakpointState } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { MetaService } from 'src/app/service/meta/meta.service';
 import { JsonLdService, ItemListElement } from 'src/app/service/json-ld/json-ld.service';
+import { TocService } from 'ngx-toc';
 
 @Component({
   selector: 'app-blog-post',
@@ -53,7 +54,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
 
   constructor(private service:ContentfulService, private route:ActivatedRoute, private elementRef :ElementRef<HTMLElement>, 
     private renderer: Renderer2, private breakpointObserver: BreakpointObserver, private pageTitle :Title, 
-    private metaService: MetaService, private jsonLdService: JsonLdService) {
+    private metaService: MetaService, private jsonLdService: JsonLdService, private tocService: TocService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -126,7 +127,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     });
     
     if (this.headings.length != 0 && !this.finshedRendering) {
-      this.createToc(this.headings);
+      this.renderer.appendChild(this.element.nativeElement, this.tocService.createToc('toc-target', ['h1', 'h2', 'h3'], this.router.url, this.renderer));
       const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         const id = entry.target.getAttribute('id');
@@ -145,76 +146,6 @@ export class BlogPostComponent implements OnInit, OnDestroy {
         observer.observe(section);
       });
     }
-  }
-
-  createToc(headings: HTMLElement[]) {
-    let toc = this.renderer.createElement('ul');
-    let lih1 = this.createLi(headings[0]);
-    let ulh2;
-    let ulh3;
-    
-    for(let i = 1; i < headings.length; i++) {
-      if (headings[i].tagName == 'H1') {
-        this.renderer.appendChild(toc, this.appendToLih1(lih1, ulh3, ulh2));
-        
-        lih1 = this.createLi(headings[i]);
-        ulh2 = null;
-        ulh3 = null;
-      }
-
-      if (headings[i].tagName == 'H2') {
-        if (headings[i-1]?.tagName == 'H3') {
-          // case: h2 -> h3 -> h2
-          this.renderer.appendChild(ulh2, ulh3);
-          ulh3 = null;
-        }
-
-        ulh2 = this.appendUl(ulh2, headings[i], 'H2');
-      }
-
-      if (headings[i].tagName == 'H3') {
-        ulh3 = this.appendUl(ulh3, headings[i], 'H2');
-      }
-    }
-    
-    if (lih1) {
-      this.renderer.appendChild(toc, this.appendToLih1(lih1, ulh3, ulh2));
-    }
-    this.renderer.appendChild(this.element.nativeElement, toc);
-  }
-
-  private appendToLih1(lih1: any, ulh3: any, ulh2: any) {
-    if (ulh3) {
-      this.renderer.appendChild(ulh2, ulh3);
-    }
-    if (ulh2) {
-      this.renderer.appendChild(lih1, ulh2);
-    }
-
-    return lih1;
-  }
-
-  createLi(heading: HTMLElement): string {
-    let li = this.renderer.createElement('li');
-    let a = this.renderer.createElement('a');
-    this.renderer.setProperty(a, 'href', this.hrefValue(heading.id));
-    let text = this.renderer.createText(heading.innerText);
-    this.renderer.appendChild(a, text);
-    this.renderer.appendChild(li, a);
-
-    if (heading.tagName == 'H1') {
-      this.renderer.addClass(li,'leading');
-    }
-
-    return li;
-  }
-
-  appendUl(ul:any, heading: HTMLElement, tagname:string): string {
-    if (!ul) {
-      ul = this.renderer.createElement('ul');
-    }
-    this.renderer.appendChild(ul, this.createLi(heading));
-    return ul;
   }
 
   hrefValue(id: any) :string {
