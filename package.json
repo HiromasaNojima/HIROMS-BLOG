@@ -33,7 +33,7 @@
     "ngx-markdown": "^13.0.0",
     "ngx-page-scroll": "^7.0.6",
     "ngx-page-scroll-core": "^7.0.6",
-    "ngx-toc": "^1.0.1",
+    "ngx-toc": "^1.0.2",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.25.0",
     "rxjs": "~6.6.0",
